@@ -1,0 +1,97 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+local Window = OrionLib:MakeWindow({Name = tostring("Godly Hub | Universal Esp"), HidePremium = false, IntroEnabled = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+
+local EspTab = Window:MakeTab({
+    Name = "Esp",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+getgenv().cham = false
+getgenv().nameESP = false
+getgenv().boxESP = false
+
+
+getgenv().esp_loaded = false
+getgenv().Visibility = false
+
+
+EspTab:AddToggle({
+    Name = "Visual",
+    Default = getgenv().Visibility,
+    Callback = function(Value)
+        if getgenv().esp_loaded == false and Value == true then
+            getgenv().esp_loaded = true
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/skatbr/Roblox-Releases/main/A_simple_esp.lua", true))()
+        end
+        getgenv().Visibility = Value
+    end   
+})
+
+EspTab:AddToggle({
+    Name = "Box Esp",
+    Default = getgenv().Visibility,
+    Callback = function(Value)
+        if getgenv().esp_loaded == false and Value == true then
+            getgenv().esp_loaded = true
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/skatbr/Roblox-Releases/main/A_simple_esp.lua", true))()
+        end
+        getgenv().boxESP = Value
+    end   
+})
+
+EspTab:AddToggle({
+    Name = "Name Esp",
+    Default = getgenv().Visibility,
+    Callback = function(Value)
+        if getgenv().esp_loaded == false and Value == true then
+            getgenv().esp_loaded = true
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/skatbr/Roblox-Releases/main/A_simple_esp.lua", true))()
+        end
+        getgenv().nameESP = Value
+    end   
+})
+
+EspTab:AddToggle({
+    Name = "Chams",
+    Default = getgenv().Visibility,
+    Callback = function(Value)
+        if getgenv().esp_loaded == false and Value == true then
+            getgenv().esp_loaded = true
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/skatbr/Roblox-Releases/main/A_simple_esp.lua", true))()
+        end
+        getgenv().cham = Value
+    end   
+})
+
+EspTab:AddToggle({
+    Name = "Use Team-Color",
+    Default = false,
+    Callback = function(Value)
+        getgenv().useTeamColor = Value
+    end
+})
+
+local AboutTab = Window:MakeTab({
+	Name = "About",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+AboutTab:AddParagraph("Created By:","DcYhL")
+
+AboutTab:AddButton({
+	Name = "Join Discord",
+	Callback = function()
+        setclipboard("https://discord.gg/yu9tKsfuA8")
+        OrionLib:MakeNotification({
+            Name = "Copied To Clipboard",
+            Content = "Discord Invite Link Copied To Clipboard",
+            Image = "rbxassetid://4483345998",
+            Time = 10
+        })  
+  	end    
+})
+
+OrionLib:Init()
